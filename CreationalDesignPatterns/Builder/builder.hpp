@@ -91,16 +91,18 @@ class OfficeHardwareBuilder;
 
 class Office{
     private:
+        Office(){}
         int cooler_type{};
         int computer_brand{};
-        Office(){}
+        std::string office_name{};
     
     public:
         
-        static OfficeBaseBuilder Builder();
+        static OfficeBaseBuilder Builder(std::string name);
 
         void display_office_properties()
         {
+            std::cout << "Office Office   Name  is: " << office_name << "\n";
             std::cout << "Office Cooler   Type  is: " << cooler_type << "\n";
             std::cout << "Office Computer Brand is: " << computer_brand << "\n";
             std::cout << "------------------------------------ "<< "\n";
@@ -113,18 +115,34 @@ class Office{
 
 class OfficeBaseBuilder{
     protected:
-        Office office;
+        Office m_office;
     
     public:
-        OfficeBaseBuilder(Office &office):office(office){}
+        OfficeBaseBuilder(Office &office) : m_office(office){
+            
+        }
+        OfficeBaseBuilder(Office &office, std::string name) : m_office(office){
+            m_office.office_name = name;
+        }
 
         OfficeCoolerBuilder cooler_builder();
         OfficeHardwareBuilder hw_builder();
 
+
+        Office get_office(){
+
+            return this->m_office;
+        }
+
+        /* 
+        * Alternative to get_office interface, Below call can be used.
+          The compiler automatically calls it to convert the builder into a Office object when assigning it to object of Office, e.g. in the main function
+        */
         operator Office()
         {
-            return this->office;
+            return this->m_office;
         }
+
 };
 
 class OfficeHardwareBuilder : public OfficeBaseBuilder
@@ -134,7 +152,7 @@ class OfficeHardwareBuilder : public OfficeBaseBuilder
 
         OfficeHardwareBuilder& set_computer_brand(int brand){
             
-            office.computer_brand = brand;
+            m_office.computer_brand = brand;
             return *this;
         }
 };
@@ -146,25 +164,33 @@ class OfficeCoolerBuilder: public OfficeBaseBuilder{
         
         OfficeCoolerBuilder& set_cooler_type(int type)
         {
-            this->office.cooler_type = type;
+            m_office.cooler_type = type;
             return *this;
         }
 };
 
-OfficeBaseBuilder Office::Builder()
+OfficeBaseBuilder Office::Builder(std::string name)
 {
-    Office p;
-    return OfficeBaseBuilder(p);
+    Office o;
+    if(name.length() < 100)
+    {
+        return OfficeBaseBuilder(o, name);
+    }
+
+    // invalid name, initalize office with default id values.
+    return OfficeBaseBuilder(o);
 }
   
 OfficeCoolerBuilder OfficeBaseBuilder::cooler_builder()
 {
-     return OfficeCoolerBuilder(this->office);
+    auto t =OfficeCoolerBuilder(this->m_office);
+    return t;
 }
 
 OfficeHardwareBuilder OfficeBaseBuilder::hw_builder()
 {
-     return OfficeHardwareBuilder(this->office);
+    auto t = OfficeHardwareBuilder(this->m_office); 
+    return t;
 }
 
 
