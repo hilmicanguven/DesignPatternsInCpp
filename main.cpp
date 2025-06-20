@@ -66,3 +66,12 @@
 //     second_office->display_office_properties();
 
 // }
+
+// #include "CreationalDesignPatterns/Singleton/singleton.hpp"
+
+// int main() {
+
+//     SingletonOfficeDatabase::get_reference().display_database();
+
+//     return 0;
+// }
