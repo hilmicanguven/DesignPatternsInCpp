@@ -1,0 +1,3 @@
+/*
+Bridge Design Pattern
+*/
