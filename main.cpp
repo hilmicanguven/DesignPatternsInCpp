@@ -94,3 +94,23 @@
 
 //     return 0;
 // }
+
+// #include "CreationalDesignPatterns/Bridge/bridge.hpp"
+
+// int main()
+// {
+
+//     AnimationBasedRenderer anim_render{};
+//     Book book{anim_render, 150, 2};
+
+//     book.create_images();
+
+//     Pen pen(anim_render, 41, 67);
+//     pen.create_images();
+
+//     AIBasedRenderer ai_render{};
+//     Pen pen_2{ai_render, 06, 75};
+//     pen_2.create_images();
+
+//     return 0;
+// }
