@@ -7,14 +7,14 @@ Bu kalıp "Space Optimization" ile ilgilidir. Gereksiz yere depolanan verilerden
                 bir pointer ve isimlerin listesi ile daha verimli bir şekilde bu bilgiyi depolayabiliriz.
 
             -> yine daha basit örnek verelim, daha önceki örneklerimizde "Office" sınıfını uyarlıyorduk. farz edelim ki çalışan ve ailelerin bilgilerini tutuyoruz.
-                her birini Person sınıfından oluşturduğumuzu varsayalım. bir ailedeki kişilerin adresleri çok büyük oranda ayno olacaktır.
+                her birini Person sınıfından oluşturduğumuzu varsayalım. bir ailedeki kişilerin adresleri çok büyük oranda aynı olacaktır.
                 bu durumda her bir aile üyesinin adresini ayrı ayrı Person sınıfı içinde tutmak çok da akıllıca olmayacaktır. 
                 çünkü bu adresin bir kere oluşturulup (RAM içerisinde) diğerlerinde de aynı adresin referansı (RAM deki aynı adresi) kullanması mantıklıdır.
 
 Genele yayarsak, ortak sahip olunan özelliklerin her bir nesne için saklanması yerine ortak bir noktadan paylaşılmasıdır.
 
 bu ortak yerde oluşturma ve paylaşma işlemini kendimiz yapabileceğimiz gibi bazı kütüphaneler bunu halihazırda sağlıyor olabilir 
-    (ör. Boost kütüphanesi doğrudan "flyweight" ismiyle bir stl sağlıyor ve doğrudan bu kullanılabilir (bir çeşit dictionary))
+    (ör. Boost kütüphanesi doğrudan "flyweight" ismiyle bir STL sağlıyor ve doğrudan bu kullanılabilir (bir çeşit dictionary))
 
 Bir genel kültür bilgisi -> Flyweight ismi Box sporunda "Sinek Siklet" yani 51kg (111 lbs) altındaki siklete verilen isim. İsmi de buradan geliyor.
 
