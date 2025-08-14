@@ -18,7 +18,7 @@ Bu kalıbı kullanıyorken thread-safety olup olmadığını kontrol etmemiz ger
 */
 
 /*
-Single kalıbını office örneğimize uyguladık. 
+Single kalıbını office örneğimize uygulayalım. 
 
 Bu esnada projemiz için bir test yazacağımızı düşünelim. Örneğin, istediğimiz ofislerin toplam çalışan sayısını hesaplayan
 bir fonksiyonumuz var ve bunu test etmek istiyoruz. Bu fonksiyon, ofislere ait database bilgisini ancak ve ancak SingleOfficeDatabase
@@ -61,6 +61,8 @@ türü için bir tane ve ".csv" dosya formatı için birer tane instance yaratab
  *                 - Create static method that returns a reference to a static member
  *                 - Guaranteed to ve thread-safe since C++11
  *              Consider depending on an abstraction instead of directly using a singleton class
+ * 
+ * Important Note: The pattern requires special treatment in a multithreaded environment so that multiple threads won’t create a singleton object several times.
  * 
  */
 
@@ -133,6 +135,7 @@ class SingletonOfficeDatabase : public Office {
             }
         }
 
+        // sometimes named "get_instance"
         static SingletonOfficeDatabase& get_reference()
         {
             static SingletonOfficeDatabase db;

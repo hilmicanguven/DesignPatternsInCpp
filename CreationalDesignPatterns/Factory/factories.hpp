@@ -9,7 +9,8 @@ Bu durumda oluşturulacak nesnelerin yaratılması da "ctor" dan bu fonksiyon al
 Halihazırda bir sınıf için yazılan uygulama kodu ikinci bir sınıf geldiği zaman değişikliğe uğraması gerekir
 ve yeni sınıfı entegre etmesi oldukça zordur.
 Bu factory sınıfı içerisinde aynı Base Class'dan türeyen Derived Class'ların üretimi gerçekleştirilebilir.
-
+Bu durumda Factory class kullanılarak nesnelerimiz hazır bir şekilde oluşturularak client code'a verilir.
+ancak elbette bu durumda nesne içinde set edilen propert'ler nedir bilinmez.
 
 "
         The Factory Method separates product construction code from the code that actually uses the product. 
@@ -90,18 +91,34 @@ int main_2()
 
 Abstract Factory:
 
+Abstract Factory'de ise birden fazla Product'ı virtul interface yardımıyla tek bir Factory'de üretme işidir.
 Birden fazla sınıf, aynı aile içerisinde değerlendiriliyorsa bu kalıbın kullanılması daha uygundur.
 Birden fazla "factory" i ortak bir sınıf içerisinde toplayarak birlikte üretilmelerini sağlar.
-Örneğin, windows ve mac işletim sistemlerindeki "button" ve "checkbox" sınıfları birbirlerine özgüdür.
+Örneğin, windows ve mac işletim sistemlerindeki "button" ve "checkbox" sınıfları OS'a özgüdür.
 
 ----------------------------------------------------------------------------------
-Feature	      |   Factory Method	       |  Abstract Factory
+Feature	        |   Factory Method	         |  Abstract Factory
 ----------------------------------------------------------------------------------
-Products	    |   One product	           |  Multiple related products
-Flexibility	  |   Simple creation logic	 |  Grouping families of objects
+Products	    |   One product	             |  Multiple related products
+Flexibility	    |   Simple creation logic	 |  Grouping families of objects
 Interface	    |   Single factory method	 |  Factory interface with multiple methods
-Complexity	  |   Less complex	         |  More complex and extensible
+Complexity	    |   Less complex	         |  More complex and extensible
 ---------------------------------------------------------------------------------- 
+
+ You can be sure that the products you’re getting from a factory are compatible with each other.
+ You avoid tight coupling between concrete products and client code.
+ Single Responsibility Principle. You can extract the product creation code into one place, making the code easier to support.
+ Open/Closed Principle. You can introduce new variants of products without breaking existing client code.
+
+                                        Abstract GUI Factory
+                                                |
+                                                |
+                    Windows Factory                                          MAC Factory
+                ---------------------                                   ---------------------                       
+                |                   |                                   |                   |
+    win10 checkbox create    win10 button create           MAC checkbox create    MAC button create
+
+
 
 
 - Chatgpt Code example (also in refactoring.guru)

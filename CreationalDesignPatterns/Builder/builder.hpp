@@ -4,6 +4,11 @@ Bazı nesneler kompleks değil de basit özelliklere sahip olduğunda tek bir "c
 büyüdükçe "ctor" içerisine çok sayıda argüman vermek etkili olmayabilir. bu durumda nesneleri adım adım (step-by-step) 
 oluşturmak gerekir. Nesne, tek bir fonksiyon çağrısı ile değil, bir dizi aşamalı fonksiyonla oluşturulur. 
 Bu şekilde nesneleri oluşturmak için bir Builder sınıfı kullanılır.
+Abstracy Factory ile kıyaslarsak orada nesneler bir bütün halinde oluşturulurken burada adım adım oluşturulur.
+
+Base builder sınıfı, nesne yaratırken olabilecek tüm adımları tanımlar (ev örneğin -> havuz, ısıtma sistemi, gider sistemi, bahçe peyzajı vb) 
+concrete builders ise bu adımları üretilecek ana sınıfa/ürüne göre özelleştirir. 
+Client kod ise hangi ev oluşturulacak veya hangi sıra ile yapılacak buna karar verir.
 
 Ne zaman kullanılmalı:
     Nesne oluşturma süreci karmaşıksa ve farklı konfigürasyonlara sahipse.

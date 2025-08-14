@@ -4,12 +4,14 @@ Adapter Design Pattern
 
 Gerçek hayatta karşımıza çıkan bir problem ile daha iyi anlayamaya çalışalım.
 Güç adaptöleri her ülke/kıtada farklı voltaj seviyesine ve priz girişine sahiptir.
-Aldığımız elektrnik ürünler hepsine uyacak şekilde bir tasarıma sahip değildir.
+Aldığımız elektronik ürünler hepsine uyacak şekilde bir tasarıma sahip değildir.
 Bunun yerine bir çeşit güç adaptörü kullanarak aynı ürünümüzü farklı ülkelerde de kullanabiliriz.
 
 Adapter tasarım kalıbı da benzer uyumlandırmayı yazılım parçaları için yapar.
 
     |   Adapter : a construct which adapts an existing interface X to conform to the required interface Y.
+
+    |   Adapter is a structural design pattern that allows objects with incompatible interfaces to collaborate. (refactoring.guru)
 
 
 Adapter, Client ve uygulamalar arasında hem çalıştıkları "data type" dönüşümleri yapabilir hem de farklı
@@ -23,6 +25,11 @@ Adapter kalıbını farklı şekilde gerçekleyebiliriz.
 - two-way adapter (composition based)
 - interface adapter (default adapter)
 
+
+Adapter Pattern'inin Uygulanabileceği Örnek Projeler
+    - XML formatındaki dosyalar ile çalışan mevcut bir uygulama yeni bir format-JSON geldiğinde bunu dadesteklemesi gerekmektedir.
+        Ancak mevcut kodların değiştirilmesi çalışan uygulamaları bozabilir. 
+        Bir adapter sınıfı ile JSON formatının mevcut çalışan koda uyumlandırmamız gerekir.
 */
 
 // Adapter Design Pattern Example Code
